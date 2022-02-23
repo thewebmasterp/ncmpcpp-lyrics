@@ -15,7 +15,7 @@
     "ncmpcpp",
     "mpd",
     "mp3",
-    "lyrics-fetcher",
+    "lyrics-fetcher"
   ],
   "author": "thewebmasterp",
   "license": "ISC",
