@@ -1,6 +1,6 @@
 NAME:
-  ncmpcpp-lyrics - Add lyrics to your music library used by
-  mpd (with ncmpcpp client)
+  ncmpcpp-lyrics - Add lyrics to your music library. Compatible with ncmpcpp
+ music player.
 
 SYNOPSIS:
   ncmpcpp-lyrics [MUSIC LIBRARY DIR] [LYRICS DIR] -a [ACCESS TOKEN FILE PATH]

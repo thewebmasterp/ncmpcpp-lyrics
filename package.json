@@ -1,7 +1,7 @@
 {
   "name": "ncmpcpp-lyrics",
   "version": "1.0.0",
-  "description": "This CLI program iterates your music folder, fetches lyrics from genius and writes them to the filesystem on a specified location.",
+  "description": "Add lyrics to your music library. Compatible with ncmpcpp music player, an mpd client.",
   "main": "index.js",
   "type": "module",
   "bin": {
@@ -14,9 +14,8 @@
     "lyrics",
     "ncmpcpp",
     "mpd",
-    "id3",
-    "id3v2",
-    "mp3"
+    "mp3",
+    "lyrics-fetcher",
   ],
   "author": "thewebmasterp",
   "license": "ISC",
