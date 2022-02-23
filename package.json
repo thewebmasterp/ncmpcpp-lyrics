@@ -1,0 +1,28 @@
+{
+  "name": "ncmpcpp-lyrics",
+  "version": "1.0.0",
+  "description": "This CLI program iterates your music folder, fetches lyrics from genius and writes them to the filesystem on a specified location.",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "ncmpcpp-lyrics": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lyrics",
+    "ncmpcpp",
+    "mpd",
+    "id3",
+    "id3v2",
+    "mp3"
+  ],
+  "author": "thewebmasterp",
+  "license": "ISC",
+  "dependencies": {
+    "genius-lyrics-api": "^3.2.0",
+    "walk-sync": "^3.0.0",
+    "yargs": "^17.3.1"
+  }
+}
