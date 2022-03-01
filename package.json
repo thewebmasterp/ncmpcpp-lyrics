@@ -1,6 +1,6 @@
 {
   "name": "ncmpcpp-lyrics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Add lyrics to your music library. Compatible with ncmpcpp music player, an mpd client.",
   "main": "index.js",
   "type": "module",

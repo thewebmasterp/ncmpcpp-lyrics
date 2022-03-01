@@ -1,0 +1,3 @@
+node_modules/
+# The music folder is for testing the package
+music/

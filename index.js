@@ -4,8 +4,8 @@ import fs from 'fs'
 const fsPromises = fs.promises
 import path from 'path'
 import url from 'url'
-import fetchLyrics from './fetchLyrics.js'
-import formatData from './formatData.js'
+import fetchLyrics from './lib/fetchLyrics.js'
+import formatData from './lib/formatData.js'
 
 const __filename = url.fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -56,8 +56,8 @@ args.forEach((arg, i) => {
 // Fetch lyrics if needed and put them on the right place
 let totalSongs = 0
 const lyricsNotFound = []
-const lyricsify = async (mp3s, lyricss, ACCESS_TOKEN) => {
-  mp3s = mp3s.map(song => {
+const lyricsifyAll = async (mp3s, lyricss, ACCESS_TOKEN) => {
+  const lyricsify = song => {
     totalSongs++
     // Check if song doesn't have lyrics and if so, fetch the lyrics and write them to the filesystem.
     if (
@@ -78,6 +78,7 @@ const lyricsify = async (mp3s, lyricss, ACCESS_TOKEN) => {
             song.author,
             song.title
           )
+
           // Uncomment to test what happens if lyrics were not found.
           //lyricsNotFound.push('Metallica - sth')
           const lyricsFilePath = path.join(lyricsDir, `${songName}.txt`)
@@ -97,10 +98,15 @@ const lyricsify = async (mp3s, lyricss, ACCESS_TOKEN) => {
             }
           })()
         } catch (err) {
-          // Problem with fetching lyrics
+          // Problem with fetching lyrics (couldn't find them or sth)
+          if (err?.message?.includes('No internet connection')) {
+            throw err
+          }
           lyricsNotFound.push(songName)
-          console.error(`Couldn't fetch lyrics for ${songName}!`)
+          //console.error(`Couldn't fetch lyrics for ${songName}!`)
+          //the above is now thrown as err from fetchLyrics
           console.error(err)
+          return false
         }
       }
       return fetchAndWriteLyrics(songName)
@@ -108,7 +114,8 @@ const lyricsify = async (mp3s, lyricss, ACCESS_TOKEN) => {
       // Lyrics already exist
       return false
     }
-  })
+  }
+  mp3s = mp3s.map(lyricsify)
   return Promise.all(mp3s)
 }
 
@@ -134,7 +141,7 @@ if (fs.existsSync(accTokenFile) && fs.statSync(accTokenFile).isFile()) {
     }
 
     // Use input
-    lyricsify(mp3s, lyricss, ACCESS_TOKEN).then(() => {
+    lyricsifyAll(mp3s, lyricss, ACCESS_TOKEN).then(() => {
       // Print summary before exit.
       const haveLyrics = totalSongs - lyricsNotFound.length
       const colorifyXfromY = haveLyrics === totalSongs && totalSongs !== 0
