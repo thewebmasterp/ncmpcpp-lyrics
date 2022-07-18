@@ -18,7 +18,7 @@ DESCRIPTION:
    In order for this little CLI program to be able to fetch lyrics from the
   Genius API, you need to provide it with a text file containing ACCESS_TOKEN
   that you can obtain from https://genius.com/api-clients and set via the
-  --access-token-file flag
+  --access-token-file flag.
 
    [MUSIC LIBRARY DIR] must contain mp3 files with file names describing
   data like the title and author of the piece in format:
