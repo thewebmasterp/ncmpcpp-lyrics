@@ -4,7 +4,7 @@ Add lyrics to your music library. Compatible with ncmpcpp music player, an mpd c
 
 ## Installation
 
-Use [npm](https://www.npmjs.com/) to install ncmpcpp-lyrics (ideally globally).
+Use [npm](https://www.npmjs.com/) to install ncmpcpp-lyrics.
 
 ```bash
 npm install -g ncmpcpp-lyrics
